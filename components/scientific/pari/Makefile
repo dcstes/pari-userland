@@ -18,6 +18,7 @@ include ../../../make-rules/shared-macros.mk
 
 COMPONENT_NAME=		pari
 COMPONENT_VERSION=	2.17.0
+COMPONENT_REVISION=	1
 COMPONENT_SUMMARY=	The PARI Computer Algebra System
 COMPONENT_PROJECT_URL=	https://pari.math.u-bordeaux.fr
 COMPONENT_SRC=		pari-$(COMPONENT_VERSION)
@@ -44,6 +45,8 @@ CONFIGURE_SCRIPT= $(SOURCE_DIR)/Configure
 CONFIGURE_OPTIONS= --prefix=$(CONFIGURE_PREFIX)
 # PARI/gp installs its 64bit library in /usr/lib
 CONFIGURE_OPTIONS += --libdir=$(USRLIBDIR64)
+# multi-threaded libraries
+CONFIGURE_OPTIONS += --mt=pthread
 CONFIGURE_OPTIONS += --with-readline
 
 CONFIGURE_ENV += CFLAGS="$(CFLAGS)"
